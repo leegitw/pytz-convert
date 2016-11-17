@@ -1,7 +1,7 @@
 <h2>pytimezone-convert</h2>
 <h3>Timezone conversion functions for Python.</h3>
 <h4>Thursday, 2016 November 17, 2016 08:00:00 UTC</h4>
-<h4>Version: 0.1.0</h4>
+<h4>Version: 0.1.1</h4>
 ===
 
 Extension of python package pytz by providing timezone conversion functions.

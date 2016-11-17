@@ -46,9 +46,6 @@ def main():
     tz_seconds = convert_tz_abbrev_to_tz_seconds('PST')
     pprint(tz_seconds)
 
-    tz_seconds = convert_tz_abbrev_to_tz_seconds('PDT')
-    pprint(tz_seconds)
-
     tz_abbrev = convert_tz_name_to_now_tz_abbrev(tz_name)
     pprint(tz_abbrev)
 
