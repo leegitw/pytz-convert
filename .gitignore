@@ -12,8 +12,8 @@
 *.egg-info/
 build/
 __pycache__/
-pycountries/__pycache__/
-pycountries/helpers/__pycache__/
+pytimezone_convert/__pycache__/
+pytimezone_convert/helpers/__pycache__/
 *.pyc
 
 # Code documentation
