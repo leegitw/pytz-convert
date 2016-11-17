@@ -27,8 +27,8 @@
 # copyright Copyright (c) 2016, TUNE Inc. (http://www.tune.com)
 #
 
-find pytimezone-convert/ -type f -name '*.py' -print0 | xargs -0 sed -i .bak -E "s/[[:space:]]*$//"
-find pytimezone-convert/ -type f -name '*.md' -print0 | xargs -0 sed -i .bak -E "s/[[:space:]]*$//"
+find pytz-convert/ -type f -name '*.py' -print0 | xargs -0 sed -i .bak -E "s/[[:space:]]*$//"
+find pytz-convert/ -type f -name '*.md' -print0 | xargs -0 sed -i .bak -E "s/[[:space:]]*$//"
 
 find . -type f -name 'Makefile' -print0 | xargs -0 sed -i .bak -E "s/[[:space:]]*$//"
 find . -type f -name 'README*' -print0 | xargs -0 sed -i .bak -E "s/[[:space:]]*$//"

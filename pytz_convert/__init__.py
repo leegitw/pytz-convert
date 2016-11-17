@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#  @namespace pytimezone-convert
+#  @namespace pytz-convert
 
-__title__ = 'pytimezone-convert'
-__version__ = '0.1.3'
+__title__ = 'pytz-convert'
+__version__ = '2016.0'
 __build__ = 0x000103
 __version_info__ = tuple(__version__.split('.'))
 

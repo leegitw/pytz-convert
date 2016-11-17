@@ -7,7 +7,7 @@ import sys
 from pprintpp import pprint
 import pytz
 
-from pytimezone_convert import (
+from pytz_convert import (
     convert_tz_abbrev_to_tz_offset,
     convert_tz_abbrev_to_tz_seconds,
     convert_tz_name_to_now_tz_abbrev,

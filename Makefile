@@ -10,21 +10,21 @@ PIP3    := $(shell which pip3)
 PY_MODULES := pip setuptools pylint flake8 pprintpp pep8 requests six sphinx wheel retry validators python-dateutil
 PYTHON3_SITE_PACKAGES := $(shell python3 -c "import site; print(site.getsitepackages()[0])")
 
-PYTIMEZONE_CONVERT_PKG := pytimezone-convert
-PYTIMEZONE_CONVERT_PKG_PREFIX := pytimezone_convert
+PYTIMEZONE_CONVERT_PKG := pytz-convert
+PYTIMEZONE_CONVERT_PKG_PREFIX := pytz_convert
 
 TUNE_MV_PKG_SUFFIX := py3-none-any.whl
 
 VERSION := $(shell $(PYTHON3) setup.py version)
 PYTIMEZONE_CONVERT_WHEEL_ARCHIVE := dist/$(PYTIMEZONE_CONVERT_PKG_PREFIX)-$(VERSION)-$(TUNE_MV_PKG_SUFFIX)
 
-MV_INTEGRATION_FILES := $(shell find pytimezone-convert ! -name '__init__.py' -type f -name "*.py")
+MV_INTEGRATION_FILES := $(shell find pytz-convert ! -name '__init__.py' -type f -name "*.py")
 LINT_REQ_FILE := requirements-pylint.txt
 REQ_FILE      := requirements.txt
 SETUP_FILE    := setup.py
 ALL_FILES     := $(MV_INTEGRATION_FILES) $(REQ_FILE) $(SETUP_FILE)
 
-# Report the current pytimezone-convert version.
+# Report the current pytz-convert version.
 version:
 	@echo MV Integration Base Version: $(VERSION)
 
@@ -160,11 +160,11 @@ flake8:
 analysis: install
 	. venv/bin/activate; flake8 --ignore=E123,E126,E128,E265,E501 examples
 	. venv/bin/activate; flake8 --ignore=E123,E126,E128,E265,E501 tests
-	. venv/bin/activate; flake8 --ignore=F401,E265,E129 pytimezone-convert
-	. venv/bin/activate; pylint --rcfile tools/pylintrc pytimezone-convert | more
+	. venv/bin/activate; flake8 --ignore=F401,E265,E129 pytz-convert
+	. venv/bin/activate; pylint --rcfile tools/pylintrc pytz-convert | more
 
 lint: clean
-	pylint --rcfile .pylintrc pytimezone-convert | more
+	pylint --rcfile .pylintrc pytz-convert | more
 
 lint-requirements: $(LINT_REQ_FILE)
 	$(PIP3) install --upgrade -f $(LINT_REQ_FILE)
