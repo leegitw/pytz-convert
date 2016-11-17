@@ -1,16 +1,16 @@
-## pytimezone-convert Authors
-## Countries conversion functions for Python 2.7 and 3.0
+## pytz-convert Authors
+## Timezone conversion functions for Python
 ===
 
-## pytimezone-convert Authors
+## pytz-convert Authors
 ==========================================
 
-We'd like to thank the following people who have contributed to the `pytimezone-convert` repository.
+We'd like to thank the following people who have contributed to the `pytz-convert` repository.
 
 - Jeff Tanner <jefft@tune.com>
 - Zaq? Wiedmann <zaq@tune.com>
 
-## pytimezone-convert-python Maintainers
+## pytz-convert-python Maintainers
 ==========================================
 
 - Jeff Tanner <jefft@tune.com>

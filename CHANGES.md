@@ -1,9 +1,9 @@
-## pytimezone-convert Changes
-## Countries conversion functions for Python 2.7 and 3.0
+## pytz-convert Changes
+## Timezone conversion functions for Python
 ===
 
-Here you can see the full list of changes between each `pytimezone-convert` release.
+Here you can see the full list of changes between each `pytz-convert` release.
 
-Version 0.1.3
--------------
+Version 2016.0
+--------------
 * Initial release

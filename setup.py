@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#  @namespace pytimezone-convert
+#  @namespace pytz-convert
 
 from __future__ import with_statement
 
@@ -21,7 +21,7 @@ REQUIREMENTS = [
 ]
 
 PACKAGES = [
-    'pytimezone_convert'
+    'pytz_convert'
 ]
 
 CLASSIFIERS = [
@@ -45,7 +45,7 @@ CLASSIFIERS = [
     'Topic :: Software Development :: Libraries :: Python Modules'
 ]
 
-with open('pytimezone_convert/__init__.py', 'r') as fd:
+with open('pytz_convert/__init__.py', 'r') as fd:
     version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', fd.read(), re.MULTILINE).group(1)
 
 if not version:
@@ -56,15 +56,15 @@ if len(sys.argv) < 2 or sys.argv[1] == 'version':
     sys.exit()
 
 setup(
-    name='pytimezone-convert',
+    name='pytz-convert',
     version=version,
     description='Timezone conversion functions for Python',
     author='TUNE Inc., TuneLab',
     author_email='jefft@tune.com',
-    url='https://github.com/TuneLab/pytimezone-convert',
+    url='https://github.com/TuneLab/pytz-convert',
     install_requires=REQUIREMENTS,
     packages=PACKAGES,
-    package_dir={'pytimezone-convert': 'pytimezone-convert'},
+    package_dir={'pytz-convert': 'pytz-convert'},
     include_package_data=True,
     license='Apache 2.0',
     zip_safe=False,
@@ -75,6 +75,6 @@ setup(
 
     Extension of python package pytz by providing timezone conversion functions.
 
-    See https://github.com/TuneLab/pytimezone-convert for more information.
+    See https://github.com/TuneLab/pytz-convert for more information.
     """
 )
