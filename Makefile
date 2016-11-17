@@ -10,13 +10,13 @@ PIP3    := $(shell which pip3)
 PY_MODULES := pip setuptools pylint flake8 pprintpp pep8 requests six sphinx wheel retry validators python-dateutil
 PYTHON3_SITE_PACKAGES := $(shell python3 -c "import site; print(site.getsitepackages()[0])")
 
-PYCOUNTRY_CONVERT_PKG := pytimezone-convert
-PYCOUNTRY_CONVERT_PKG_PREFIX := pytimezone_convert
+PYTIMEZONE_CONVERT_PKG := pytimezone-convert
+PYTIMEZONE_CONVERT_PKG_PREFIX := pytimezone_convert
 
 TUNE_MV_PKG_SUFFIX := py3-none-any.whl
 
 VERSION := $(shell $(PYTHON3) setup.py version)
-PYCOUNTRY_CONVERT_WHEEL_ARCHIVE := dist/$(PYCOUNTRY_CONVERT_PKG_PREFIX)-$(VERSION)-$(TUNE_MV_PKG_SUFFIX)
+PYTIMEZONE_CONVERT_WHEEL_ARCHIVE := dist/$(PYTIMEZONE_CONVERT_PKG_PREFIX)-$(VERSION)-$(TUNE_MV_PKG_SUFFIX)
 
 MV_INTEGRATION_FILES := $(shell find pytimezone-convert ! -name '__init__.py' -type f -name "*.py")
 LINT_REQ_FILE := requirements-pylint.txt
@@ -44,22 +44,22 @@ clean:
 	@echo clean
 	@echo "======================================================"
 	rm -fR __pycache__ venv "*.pyc" build/*    \
-		$(PYCOUNTRY_CONVERT_PKG_PREFIX)/__pycache__/         \
-		$(PYCOUNTRY_CONVERT_PKG_PREFIX)/helpers/__pycache__/ \
-		$(PYCOUNTRY_CONVERT_PKG_PREFIX).egg-info/*
+		$(PYTIMEZONE_CONVERT_PKG_PREFIX)/__pycache__/         \
+		$(PYTIMEZONE_CONVERT_PKG_PREFIX)/helpers/__pycache__/ \
+		$(PYTIMEZONE_CONVERT_PKG_PREFIX).egg-info/*
 	find ./* -maxdepth 0 -name "*.pyc" -type f -delete
-	find $(PYCOUNTRY_CONVERT_PKG_PREFIX) -name "*.pyc" -type f -delete
+	find $(PYTIMEZONE_CONVERT_PKG_PREFIX) -name "*.pyc" -type f -delete
 
 clean-again:
 	@echo "======================================================"
 	@echo clean-again
 	@echo "======================================================"
 	rm -fR __pycache__ venv "*.pyc" build/*    \
-		$(PYCOUNTRY_CONVERT_PKG_PREFIX)/__pycache__/         \
-		$(PYCOUNTRY_CONVERT_PKG_PREFIX)/helpers/__pycache__/ \
-		$(PYCOUNTRY_CONVERT_PKG_PREFIX).egg-info/*
+		$(PYTIMEZONE_CONVERT_PKG_PREFIX)/__pycache__/         \
+		$(PYTIMEZONE_CONVERT_PKG_PREFIX)/helpers/__pycache__/ \
+		$(PYTIMEZONE_CONVERT_PKG_PREFIX).egg-info/*
 	find ./* -maxdepth 0 -name "*.pyc" -type f -delete
-	find $(PYCOUNTRY_CONVERT_PKG_PREFIX) -name "*.pyc" -type f -delete
+	find $(PYTIMEZONE_CONVERT_PKG_PREFIX) -name "*.pyc" -type f -delete
 
 # Install the project requirements.
 requirements: $(REQ_FILE) pip
@@ -72,13 +72,13 @@ dist: clean
 	@echo "======================================================"
 	@echo dist
 	@echo "======================================================"
-	@echo Building: $(PYCOUNTRY_CONVERT_WHEEL_ARCHIVE)
+	@echo Building: $(PYTIMEZONE_CONVERT_WHEEL_ARCHIVE)
 	$(PYTHON3) --version
-	find ./dist/ -name $(PYCOUNTRY_CONVERT_PKG_PREFIX_PATTERN) -exec rm -vf {} \;
+	find ./dist/ -name $(PYTIMEZONE_CONVERT_PKG_PREFIX_PATTERN) -exec rm -vf {} \;
 	$(PYTHON3) $(SETUP_FILE) bdist_wheel
 	$(PYTHON3) $(SETUP_FILE) bdist_egg
 	$(PYTHON3) $(SETUP_FILE) sdist --format=zip,gztar
-	ls -al ./dist/$(PYCOUNTRY_CONVERT_PKG_PREFIX_PATTERN)
+	ls -al ./dist/$(PYTIMEZONE_CONVERT_PKG_PREFIX_PATTERN)
 
 # DIST UPDATE INTENTIONALLY REMOVED
 
@@ -92,47 +92,47 @@ build: $(ALL_FILES) pip requirements
 
 uninstall:
 	@echo "======================================================"
-	@echo uninstall $(PYCOUNTRY_CONVERT_PKG)
+	@echo uninstall $(PYTIMEZONE_CONVERT_PKG)
 	@echo "======================================================"
 	$(PIP3) install --upgrade list
-	@if $(PIP3) list --format=legacy | grep -F $(PYCOUNTRY_CONVERT_PKG) > /dev/null; then \
-		echo "python package $(PYCOUNTRY_CONVERT_PKG) Found"; \
-		$(PIP3) uninstall --yes $(PYCOUNTRY_CONVERT_PKG); \
+	@if $(PIP3) list --format=legacy | grep -F $(PYTIMEZONE_CONVERT_PKG) > /dev/null; then \
+		echo "python package $(PYTIMEZONE_CONVERT_PKG) Found"; \
+		$(PIP3) uninstall --yes $(PYTIMEZONE_CONVERT_PKG); \
 	else \
-		echo "python package $(PYCOUNTRY_CONVERT_PKG) Not Found"; \
+		echo "python package $(PYTIMEZONE_CONVERT_PKG) Not Found"; \
 	fi;
 
 remove-package: uninstall
 	@echo "======================================================"
-	@echo remove-package $(PYCOUNTRY_CONVERT_PKG)
+	@echo remove-package $(PYTIMEZONE_CONVERT_PKG)
 	@echo "======================================================"
-	rm -fR $(PYTHON3_SITE_PACKAGES)/$(PYCOUNTRY_CONVERT_PKG_PREFIX)*
+	rm -fR $(PYTHON3_SITE_PACKAGES)/$(PYTIMEZONE_CONVERT_PKG_PREFIX)*
 
 # Install the module from a binary distribution archive.
 install: remove-package
 	@echo "======================================================"
-	@echo install $(PYCOUNTRY_CONVERT_PKG)
+	@echo install $(PYTIMEZONE_CONVERT_PKG)
 	@echo "======================================================"
 	$(PIP3) install --upgrade pip
-	$(PIP3) install --upgrade $(PYCOUNTRY_CONVERT_WHEEL_ARCHIVE)
-	$(PIP3) freeze | grep $(PYCOUNTRY_CONVERT_PKG)
+	$(PIP3) install --upgrade $(PYTIMEZONE_CONVERT_WHEEL_ARCHIVE)
+	$(PIP3) freeze | grep $(PYTIMEZONE_CONVERT_PKG)
 
 # Install project for local development. Changes to the files will be reflected in installed code
 local-dev-editable: remove-package
 	@echo "======================================================"
-	@echo local-dev-editable $(PYCOUNTRY_CONVERT_PKG)
+	@echo local-dev-editable $(PYTIMEZONE_CONVERT_PKG)
 	@echo "======================================================"
 	$(PIP3) install --upgrade freeze
 	$(PIP3) install --upgrade --editable .
-	$(PIP3) freeze | grep $(PYCOUNTRY_CONVERT_PKG)
+	$(PIP3) freeze | grep $(PYTIMEZONE_CONVERT_PKG)
 
 local-dev: remove-package
 	@echo "======================================================"
-	@echo local-dev $(PYCOUNTRY_CONVERT_PKG)
+	@echo local-dev $(PYTIMEZONE_CONVERT_PKG)
 	@echo "======================================================"
 	$(PIP3) install --upgrade freeze
 	$(PIP3) install --upgrade .
-	$(PIP3) freeze | grep $(PYCOUNTRY_CONVERT_PKG)
+	$(PIP3) freeze | grep $(PYTIMEZONE_CONVERT_PKG)
 
 dist:
 	rm -fR ./dist/*
@@ -190,7 +190,7 @@ site-packages:
 	@echo $(PYTHON3_SITE_PACKAGES)
 
 list-package:
-	ls -al $(PYTHON3_SITE_PACKAGES)/$(PYCOUNTRY_CONVERT_PKG_PREFIX)*
+	ls -al $(PYTHON3_SITE_PACKAGES)/$(PYTIMEZONE_CONVERT_PKG_PREFIX)*
 
 
 .PHONY: brew-python clean register lint pylint pep8 pyflakes examples analysis
