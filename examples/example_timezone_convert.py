@@ -8,15 +8,9 @@ from pprintpp import pprint
 import pytz
 
 from pytz_convert import (
-    convert_tz_abbrev_to_tz_offset,
-    convert_tz_abbrev_to_tz_seconds,
-    convert_tz_name_to_now_tz_abbrev,
-    convert_tz_name_to_date_tz_abbrev,
-    convert_tz_name_to_now_tz_offset,
-    convert_tz_offset_and_date_to_tz_name,
-    convert_tz_offset_to_tz_hours,
-    convert_tz_offset_to_tz_minutes,
-    convert_tz_hours_to_tz_offset,
+    convert_tz_abbrev_to_tz_offset, convert_tz_abbrev_to_tz_seconds, convert_tz_name_to_now_tz_abbrev,
+    convert_tz_name_to_date_tz_abbrev, convert_tz_name_to_now_tz_offset, convert_tz_offset_and_date_to_tz_name,
+    convert_tz_offset_to_tz_hours, convert_tz_offset_to_tz_minutes, convert_tz_hours_to_tz_offset,
     parse_gmt_offset_timezone
 )
 
@@ -55,21 +49,13 @@ def main():
     tz_abbrev = convert_tz_name_to_date_tz_abbrev(tz_name, str_date='2016-03-30')
     pprint(tz_abbrev)
 
-    google_adwords_tz_name, tz_offset = parse_gmt_offset_timezone(
-        tz_gmt_offset_name='(GMT-08:00) Pacific Time'
-    )
+    google_adwords_tz_name, tz_offset = parse_gmt_offset_timezone(tz_gmt_offset_name='(GMT-08:00) Pacific Time')
     print("{}, {}".format(google_adwords_tz_name, tz_offset))
 
-    tz_names = convert_tz_offset_and_date_to_tz_name(
-        tz_offset=tz_offset,
-        str_date='2016-03-01'
-    )
+    tz_names = convert_tz_offset_and_date_to_tz_name(tz_offset=tz_offset, str_date='2016-03-01')
     print("{}, {}".format(tz_names, tz_offset))
 
-    tz_names = convert_tz_offset_and_date_to_tz_name(
-        tz_offset=tz_offset,
-        str_date='2016-03-30'
-    )
+    tz_names = convert_tz_offset_and_date_to_tz_name(tz_offset=tz_offset, str_date='2016-03-30')
     print("{}, {}".format(tz_names, tz_offset))
 
     pprint(pytz.country_timezones['IN'])
@@ -80,14 +66,9 @@ def main():
         else:
             tz_offset = "-{:02d}00".format(abs(tz_offset_num))
 
-        tz_names = convert_tz_offset_and_date_to_tz_name(
-            tz_offset=tz_offset,
-            str_date='2016-03-01'
-        )
-        print("{}, {}".format(
-            tz_offset,
-            tz_names
-        ))
+        tz_names = convert_tz_offset_and_date_to_tz_name(tz_offset=tz_offset, str_date='2016-03-01')
+        print("{}, {}".format(tz_offset, tz_names))
+
 
 if __name__ == '__main__':
     sys.exit(main())
