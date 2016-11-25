@@ -16,3 +16,5 @@ pyhttpstatus_utils/__pycache__/
 pyhttpstatus_utils/helpers/__pycache__/
 *.pyc
 *.zip
+
+dist/
