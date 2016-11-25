@@ -61,6 +61,12 @@ clean:
 		$(PACKAGE_PREFIX).egg-info/*
 	find ./* -maxdepth 0 -name "*.pyc" -type f -delete
 	find $(PACKAGE_PREFIX) -name "*.pyc" -type f -delete
+	@echo "======================================================"
+	@echo delete distributions: $(PACKAGE)
+	@echo "======================================================"
+	mkdir -p ./dist/
+	find ./dist/ -name $(PACKAGE_WILDCARD) -exec rm -vf {} \;
+	find ./dist/ -name $(PACKAGE_PREFIX_WILDCARD) -exec rm -vf {} \;
 
 uninstall-package: clean
 	@echo "======================================================"
@@ -81,7 +87,6 @@ remove-package: uninstall-package
 	@echo "======================================================"
 	rm -fR $(PYTHON3_SITE_PACKAGES)/$(PACKAGE_PREFIX)*
 
-# Install the module from a binary distribution archive.
 install: remove-package
 	@echo "======================================================"
 	@echo install $(PACKAGE)
@@ -124,11 +129,6 @@ local-dev: remove-package
 
 dist: clean
 	@echo "======================================================"
-	@echo remove $(PACKAGE_PREFIX_WILDCARD) and $(PACKAGE_WILDCARD)
-	@echo "======================================================"
-	find ./dist/ -name $(PACKAGE_WILDCARD) -exec rm -vf {} \;
-	find ./dist/ -name $(PACKAGE_PREFIX_WILDCARD) -exec rm -vf {} \;
-	@echo "======================================================"
 	@echo dist $(PACKAGE)
 	@echo "======================================================"
 	$(PIP3) install --upgrade -r requirements.txt
@@ -140,11 +140,6 @@ dist: clean
 	ls -al ./dist/$(PACKAGE_PREFIX_WILDCARD)
 
 build: clean
-	@echo "======================================================"
-	@echo remove $(PACKAGE_PREFIX_WILDCARD) and $(PACKAGE_WILDCARD)
-	@echo "======================================================"
-	find ./dist/ -name $(PACKAGE_WILDCARD) -exec rm -vf {} \;
-	find ./dist/ -name $(PACKAGE_PREFIX_WILDCARD) -exec rm -vf {} \;
 	@echo "======================================================"
 	@echo build $(PACKAGE)
 	@echo "======================================================"

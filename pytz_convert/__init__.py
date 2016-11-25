@@ -3,7 +3,7 @@
 #  @namespace pytz-convert
 
 __title__ = 'pytz-convert'
-__version__ = '2016.1'
+__version__ = '0.0.2'
 __build__ = 0x201601
 __version_info__ = tuple(__version__.split('.'))
 
