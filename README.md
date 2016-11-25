@@ -1,7 +1,7 @@
 <h2>pytz-convert</h2>
 <h3>Timezone conversion functions for Python.</h3>
-<h4>Tue, 22 Nov 2016 19:41:22</h4>
-<h4>Version: 2016.1</h4>
+<h4>Date: Fri, 25 Nov 2016 15:00:00 +00:00</h4>
+<h4>Version: 0.0.4</h4>
 ===
 
 Extension of python package <a href="https://pypi.python.org/pypi/pytz/" target="_blank">pytz</a> by providing timezone conversion functions.
