@@ -49,7 +49,7 @@ TIMEZONE_NAMES_PREFERRED = [
     'Asia/Kolkata'  # +0530
 ]
 
-BING_TIMEZONES_TO_OFFSET = {
+BING_TIMEZONES_TO_PREFERRED = {
     'AbuDhabiMuscat': 'Asia/Dubai',
     'Adelaide': 'Australia/Adelaide',
     'Alaska': 'America/Anchorage',
@@ -500,3 +500,17 @@ def validate_tz_abbrev(tz_abbrev):
         return True
 
     return False
+
+
+def convert_bing_ads_tz(tz_bing):
+    """Convert unique bing timezone name
+    to pytz preferred standard name.
+
+    Args:
+        tz_bing:
+
+    Returns:
+        pytz timezone name
+    """
+
+    return BING_TIMEZONES_TO_PREFERRED.get(tz_bing)

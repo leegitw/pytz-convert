@@ -3,7 +3,7 @@
 #  @namespace pytz-convert
 
 __title__ = 'pytz-convert'
-__version__ = '0.0.4'
+__version__ = '0.0.5'
 __build__ = 0x000003
 __version_info__ = tuple(__version__.split('.'))
 
@@ -30,6 +30,5 @@ from .timezone_utils import (
     convert_tz_offset_to_tz_minutes,
     convert_tz_offset_to_tz_seconds,
     parse_gmt_offset_timezone,
-
-    BING_TIMEZONES_TO_OFFSET,
+    convert_bing_ads_tz
 )
