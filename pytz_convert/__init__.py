@@ -29,5 +29,7 @@ from .timezone_utils import (
     convert_tz_offset_to_tz_hours,
     convert_tz_offset_to_tz_minutes,
     convert_tz_offset_to_tz_seconds,
-    parse_gmt_offset_timezone
+    parse_gmt_offset_timezone,
+
+    BING_TIMEZONES_TO_OFFSET,
 )
