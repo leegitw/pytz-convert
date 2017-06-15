@@ -11,7 +11,7 @@ import math
 import datetime as dt
 import dateutil.tz as dtz
 import pytz
-# from pprintpp import pprint
+
 
 TIMEZONE_NAMES_PREFERRED = [
     'Pacific/Midway',  # -1100
@@ -39,15 +39,93 @@ TIMEZONE_NAMES_PREFERRED = [
     'Australia/Sydney',  # +1100
     'Pacific/Fiji',  # +1200
     'Pacific/Auckland',  # +1300
-    'Pacific/Honolulu',
-    'America/Anchorage',
-    'America/Los_Angeles',
-    'America/Denver',
-    'America/Chicago',
-    'America/New_York',
-    'Europe/Moscow',
-    'Asia/Kolkata'
+    'Pacific/Honolulu',  # -1000
+    'America/Anchorage',  # -0900
+    'America/Los_Angeles',  # -0800
+    'America/Denver',  # -0700
+    'America/Chicago',  # -0600
+    'America/New_York',  # -0500
+    'Europe/Moscow',  # +0300
+    'Asia/Kolkata'  # +0530
 ]
+
+BING_TIMEZONES_TO_PREFERRED = {
+    'AbuDhabiMuscat': 'Asia/Dubai',
+    'Adelaide': 'Australia/Adelaide',
+    'Alaska': 'America/Anchorage',
+    'Almaty_Novosibirsk': 'Asia/Dhaka',
+    'AmsterdamBerlinBernRomeStockholmVienna': 'Europe/Berlin',
+    'Arizona': 'America/Denver',
+    'AstanaDhaka': 'Asia/Dhaka',
+    'AthensBuckarestIstanbul': 'Asia/Jerusalem',
+    'AtlanticTimeCanada': 'Atlantic/Bermuda',
+    'AucklandWellington': 'Pacific/Fiji',
+    'Azores': 'Atlantic/Azores',
+    'Baghdad': 'Asia/Baghdad',
+    'BakuTbilisiYerevan': 'Asia/Baku',
+    'BangkokHanoiJakarta': 'Asia/Jakarta',
+    'BeijingChongqingHongKongUrumqi': '	Asia/Shanghai',
+    'BelgradeBratislavaBudapestLjubljanaPrague': 'Europe/Prague',
+    'BogotaLimaQuito': 'America/New_York',
+    'Brasilia': 'Atlantic/Stanley',
+    'Brisbane': 'Pacific/Guam',
+    'BrusselsCopenhagenMadridParis': 'Europe/Berlin',
+    'Bucharest': 'Asia/Jerusalem',
+    'BuenosAiresGeorgetown': 'Atlantic/Stanley',
+    'Cairo': 'Asia/Jerusalem',
+    'CanberraMelbourneSydney': 'Pacific/Guam',
+    'CapeVerdeIsland': 'Atlantic/Azores',
+    'CaracasLaPaz': 'Atlantic/Bermuda',
+    'CasablancaMonrovia': 'UTC',
+    'CentralAmerica': 'America/Chicago',
+    'CentralTimeUSCanada': 'America/Chicago',
+    'ChennaiKolkataMumbaiNewDelhi': 'Asia/Kolkata',
+    'ChihuahuaLaPazMazatlan': 'America/Denver',
+    'Darwin': '	Australia/Darwin',
+    'EasternTimeUSCanada': 'America/New_York',
+    'Ekaterinburg': 'Asia/Samarkand',
+    'FijiKamchatkaMarshallIsland': 'Pacific/Fiji',
+    'Greenland': 'Atlantic/Stanley',
+    'GreenwichMeanTimeDublinEdinburghLisbonLondon': 'UTC',
+    'GuadalajaraMexicoCityMonterrey': 'America/Chicago',
+    'GuamPortMoresby': 'Australia/Sydney',
+    'HararePretoria': 'Asia/Jerusalem',
+    'Hawaii': 'Pacific/Honolulu',
+    'HelsinkiKyivRigaSofiaTallinnVilnius': 'Asia/Jerusalem',
+    'Hobart': 'Australia/Sydney',
+    'IndianaEast': 'America/New_York',
+    'InternationalDateLineWest': 'Pacific/Midway',
+    'IrkutskUlaanBataar': 'Asia/Hong_Kong',
+    'IslandamabadKarachiTashkent': 'Asia/Samarkand',
+    'Jerusalem': 'Asia/Jerusalem',
+    'Kabul': '	Asia/Kabul',
+    'Kathmandu': 'Asia/Kathmandu',
+    'Krasnoyarsk': 'Asia/Bangkok',
+    'KualaLumpurSingapore': 'Asia/Hong_Kong',
+    'KuwaitRiyadh': 'Asia/Qatar',
+    'MagadanSolomonIslandNewCaledonia': 'Australia/Sydney',
+    'MidAtlantic': 'Atlantic/South_Georgia',
+    'MidwayIslandand_Samoa': 'Pacific/Midway',
+    'MoscowStPetersburgVolgograd': 'Asia/Qatar',
+    'MountainTime_US_Canada': 'America/Denver',
+    'Nairobi': 'Asia/Qatar',
+    'Newfoundland': 'Canada/Newfoundland',
+    'Nukualofa': 'Pacific/Auckland',
+    'OsakaSapporoTokyo': 'Asia/Tokyo',
+    'PacificTimeUSCanadaTijuana': 'America/Los_Angeles',
+    'Perth': 'Asia/Hong_Kong',
+    'Rangoon': 'Asia/Rangoon',
+    'Santiago': 'Atlantic/Bermuda',
+    'SarajevoSkopjeWarsawZagreb': 'Europe/Berlin',
+    'Saskatchewan': 'America/Chicago',
+    'Seoul': 'Asia/Tokyo',
+    'SriJayawardenepura': 'Asia/Kolkata',
+    'Taipei': 'Asia/Hong_Kong',
+    'Tehran': 'Asia/Tehran',
+    'Vladivostok': 'Australia/Sydney',
+    'WestCentralAfrica': 'Europe/Berlin',
+    'Yakutsk': 'Asia/Tokyo',
+}
 
 
 def convert_tz_abbrev_to_tz_names(tz_abbrev):
@@ -422,3 +500,17 @@ def validate_tz_abbrev(tz_abbrev):
         return True
 
     return False
+
+
+def convert_bing_ads_tz(tz_bing):
+    """Convert unique bing timezone name
+    to pytz preferred standard name.
+
+    Args:
+        tz_bing:
+
+    Returns:
+        pytz timezone name
+    """
+
+    return BING_TIMEZONES_TO_PREFERRED.get(tz_bing)
