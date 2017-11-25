@@ -242,7 +242,7 @@ def convert_tz_offset_and_date_to_tz_name(tz_offset, str_date, str_country_code=
 
 
 def convert_tz_offset_to_now_tz_abbrev(tz_offset):
-    """Convert timezone offset to current date's timezone abbreviation.
+    """Convert timezone offset + current date to current timezone abbreviation.
 
     Args:
         tz_offset:
@@ -273,7 +273,7 @@ def convert_tz_offset_to_now_tz_abbrev(tz_offset):
 
 
 def convert_tz_name_to_now_tz_offset(tz_name):
-    """Convert timezone name to current date's timezone offset.
+    """Convert timezone name + current date to current timezone offset.
 
     Args:
         tz_name:
@@ -292,21 +292,8 @@ def convert_tz_name_to_now_tz_offset(tz_name):
     return _tz_offset
 
 
-def convert_tz_name_to_date_tz_offset(tz_name, str_date):
-    """Convert timezone name to provided date's timezone abbreviation.
-
-    Args:
-        tz_name:
-        date:
-
-    Returns:
-
-    """
-    return pytz.timezone(tz_name).localize(dt.datetime.strptime(str_date, "%Y-%m-%d")).strftime('%z')
-
-
 def convert_tz_name_to_now_tz_abbrev(tz_name):
-    """Convert timezone name to current timezone abbreviation.
+    """Convert timezone name timezone name + current date to timezone abbreviation.
 
     Args:
         tz_name:
@@ -325,7 +312,7 @@ def convert_tz_name_to_now_tz_abbrev(tz_name):
 
 
 def convert_tz_name_to_date_tz_abbrev(tz_name, str_date):
-    """Convert timezone name to date's timezone abbreviation.
+    """Convert timezone name + date to timezone abbreviation.
 
     Args:
         tz_name:
@@ -346,12 +333,16 @@ def convert_tz_name_to_date_tz_abbrev(tz_name, str_date):
     return _tz_abbrev
 
 
+
 def convert_tz_name_to_date_tz_offset(tz_name, str_date):
-    """Convert timezone name to provided date's timezone abbreviation.
+    """Convert timezone name + date to timezone offset.
+
     Args:
         tz_name:
         date:
+
     Returns:
+
     """
     return pytz.timezone(tz_name).localize(dt.datetime.strptime(str_date, "%Y-%m-%d")).strftime('%z')
 
@@ -434,7 +425,7 @@ def convert_tz_offset_to_tz_seconds(tz_offset):
 
 
 def convert_tz_abbrev_to_tz_hours(tz_abbrev):
-    """Get timezone offset in hours using timezone abbreviation.
+    """Convert timezone abbreviation to timezone hours.
 
     Args:
         tz_abbrev:
@@ -447,7 +438,7 @@ def convert_tz_abbrev_to_tz_hours(tz_abbrev):
 
 
 def convert_tz_abbrev_to_tz_seconds(tz_abbrev):
-    """Get timezone offset in seconds using timezone abbreviation.
+    """Convert timezone abbreviation to timezone seconds.
 
     Args:
         tz_abbrev:
@@ -503,8 +494,7 @@ def validate_tz_abbrev(tz_abbrev):
 
 
 def convert_bing_ads_tz(tz_bing):
-    """Convert unique bing timezone name
-    to pytz preferred standard name.
+    """Convert unique bing timezone name to pytz preferred standard name.
 
     Args:
         tz_bing:
