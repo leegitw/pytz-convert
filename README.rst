@@ -110,4 +110,5 @@ Dependencies
 ^^^^^^^^^^^^
 
 - `pytz <https://pypi.python.org/pypi/pytz>`_
+- `python-dateutil <https://pypi.python.org/pypi/python-dateutil>`_
 - `wheel <https://pypi.python.org/pypi/wheel>`_
