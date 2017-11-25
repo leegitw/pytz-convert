@@ -1,7 +1,7 @@
 #   Makefile
 #
 # license   http://opensource.org/licenses/MIT The MIT License (MIT)
-# copyright Copyright (c) 2016, TUNE Inc. (http://www.tune.com)
+# copyright Copyright (c) 2017, TUNE Inc. (http://www.tune.com)
 #
 
 .PHONY: clean version build dist local-dev yapf pyflakes pylint
@@ -10,12 +10,9 @@ PACKAGE := pytz-convert
 PACKAGE_PREFIX := pytz_convert
 
 PYTHON3 := $(shell which python3)
-PYTHON27 := $(shell which python2.7)
-PIP3 := $(shell which pip3)
-PIP27 := $(PYTHON27) -m pip
+PIP3    := $(shell which pip3)
 
-PY_MODULES := pip setuptools pylint flake8 pprintpp pep8 requests six sphinx wheel retry validators python-dateutil
-PYTHON3_SITE_PACKAGES := $(shell python3 -c "import site; print(site.getsitepackages()[0])")
+PY_MODULES := pip setuptools pylint flake8 pprintpp pep8 requests six sphinx wheel python-dateutil
 
 PACKAGE_SUFFIX := py3-none-any.whl
 PACKAGE_WILDCARD := $(PACKAGE)-*
@@ -26,6 +23,10 @@ VERSION := $(shell $(PYTHON3) setup.py version)
 WHEEL_ARCHIVE := dist/$(PACKAGE_PREFIX)-$(VERSION)-$(PACKAGE_SUFFIX)
 
 PACKAGE_FILES := $(shell find $(PACKAGE_PREFIX) examples ! -name '__init__.py' -type f -name "*.py")
+PACKAGE_ALL_FILES := $(shell find $(PACKAGE_PREFIX) tests examples -type f -name "*.py")
+PACKAGE_EXAMPLE_FILES := $(shell find examples ! -name '__init__.py' -type f -name "*.py")
+PYFLAKES_ALL_FILES := $(shell find $(PACKAGE_PREFIX) tests examples -type f  -name '*.py' ! '(' -name '__init__.py' ')')
+
 TOOLS_REQ_FILE := requirements-tools.txt
 REQ_FILE      := requirements.txt
 SETUP_FILE    := setup.py
@@ -81,7 +82,14 @@ uninstall-package: clean
 		echo "python package $(PACKAGE) Not Found"; \
 	fi
 
-remove-package: uninstall-package
+site-packages:
+	@echo "======================================================"
+	@echo site-packages
+	@echo "======================================================"
+	$(eval PYTHON3_SITE_PACKAGES := $(shell python3 -c "import site; print(site.getsitepackages()[0])"))
+	@echo $(PYTHON3_SITE_PACKAGES)
+
+remove-package: uninstall-package site-packages
 	@echo "======================================================"
 	@echo remove-package $(PACKAGE_PREFIX)
 	@echo "======================================================"
@@ -132,23 +140,10 @@ dist: clean
 	@echo dist $(PACKAGE)
 	@echo "======================================================"
 	$(PIP3) install --upgrade -r requirements.txt
+	hub release create -m "$(PACKAGE_PREFIX)-$(VERSION)-$(PACKAGE_SUFFIX)" v$(VERSION)
 	$(PYTHON3) $(SETUP_FILE) bdist_wheel upload
 	$(PYTHON3) $(SETUP_FILE) bdist_egg upload
-	$(PYTHON3) $(SETUP_FILE) sdist --format=zip,gztar upload
-	$(PYTHON27) $(SETUP_FILE) bdist_egg upload
-	$(PYTHON27) $(SETUP_FILE) bdist_wheel upload
-	ls -al ./dist/$(PACKAGE_PREFIX_WILDCARD)
-
-build: clean
-	@echo "======================================================"
-	@echo build $(PACKAGE)
-	@echo "======================================================"
-	$(PIP3) install --upgrade -r requirements.txt
-	$(PYTHON3) $(SETUP_FILE) clean
-	$(PYTHON3) $(SETUP_FILE) build
-	$(PYTHON3) $(SETUP_FILE) install
-	$(PYTHON27) $(SETUP_FILE) bdist_egg
-	$(PYTHON27) $(SETUP_FILE) bdist_wheel
+	$(PYTHON3) $(SETUP_FILE) sdist --format=gztar upload
 	ls -al ./dist/$(PACKAGE_PREFIX_WILDCARD)
 
 tools-requirements: $(TOOLS_REQ_FILE)
@@ -161,31 +156,27 @@ pep8: tools-requirements
 	@echo "======================================================"
 	@echo pep8 $(PACKAGE)
 	@echo "======================================================"
-	@echo pep8: $(REQUESTS_MV_INTGS_FILES)
-	$(PYTHON3) -m pep8 --config .pep8 $(REQUESTS_MV_INTGS_FILES)
+	$(PYTHON3) -m pep8 --config .pep8 $(PACKAGE_ALL_FILES)
 
 pyflakes: tools-requirements
 	@echo "======================================================"
 	@echo pyflakes $(PACKAGE)
 	@echo "======================================================"
-	@echo pyflakes: $(PACKAGE_FILES)
 	$(PIP3) install --upgrade pyflakes
-	$(PYTHON3) -m pyflakes $(PACKAGE_FILES)
+	$(PYTHON3) -m pyflakes $(PYFLAKES_ALL_FILES)
 
 pylint: tools-requirements
 	@echo "======================================================"
 	@echo pylint $(PACKAGE)
 	@echo "======================================================"
-	@echo pylint: $(PACKAGE_FILES)
 	$(PIP3) install --upgrade pylint
-	$(PYTHON3) -m pylint --rcfile .pylintrc $(PACKAGE_FILES) --disable=C0330,F0401,E0611,E0602,R0903,C0103,E1121,R0913,R0902,R0914,R0912,W1202,R0915,C0302 | more -30
+	$(PYTHON3) -m pylint --rcfile .pylintrc $(PACKAGE_ALL_FILES) --disable=C0330,F0401,E0611,E0602,R0903,C0103,E1121,R0913,R0902,R0914,R0912,W1202,R0915,C0302 | more -30
 
 yapf: tools-requirements
 	@echo "======================================================"
 	@echo yapf $(PACKAGE)
 	@echo "======================================================"
-	@echo yapf: $(PACKAGE_FILES)
-	$(PYTHON3) -m yapf --style .style.yapf --in-place $(PACKAGE_FILES)
+	$(PYTHON3) -m yapf --style .style.yapf --in-place $(PACKAGE_ALL_FILES)
 
 lint: tools-requirements
 	@echo "======================================================"
@@ -199,39 +190,38 @@ flake8:
 	@echo "======================================================"
 	flake8 --ignore=F401,E265,E129 $(PACKAGE_PREFIX)
 
-site-packages:
-	@echo "======================================================"
-	@echo site-packages $(PACKAGE)
-	@echo "======================================================"
-	@echo $(PYTHON3_SITE_PACKAGES)
-
-list-package:
+list-package: site-packages
 	@echo "======================================================"
 	@echo list-packages $(PACKAGE)
 	@echo "======================================================"
 	ls -al $(PYTHON3_SITE_PACKAGES)/$(PACKAGE_PREFIX)*
 
-tests: build
-	$(PYTHON3) ./tests/tune_reporting_tests.py $(api_key)
+run-example: local-dev
+	@echo "======================================================"
+	@echo run-example
+	@echo "======================================================"
+	$(PYTHON3) examples/example_timezone_convert.py
 
-tests-travis-ci:
-	flake8 --ignore=F401,E265,E129 tune
-	flake8 --ignore=E123,E126,E128,E265,E501 tests
-	$(PYTHON3) ./tests/tune_reporting_tests.py $(api_key)
+test:
+	@echo "======================================================"
+	@echo py.test tests
+	@echo "======================================================"
+	py.test --verbose tests
 
-docs-sphinx-gen:
-	rm -fR ./docs/sphinx/tune_reporting/*
-	sphinx-apidoc -o ./docs/sphinx/tune_reporting/ ./tune_reporting
+coverage:
+	@echo "======================================================"
+	@echo py.test coverage
+	@echo "======================================================"
+	py.test --verbose --cov-report html --cov=$(PACKAGE_PREFIX) tests
 
-docs-install: venv
-	. venv/bin/activate; pip install -r docs/sphinx/requirements.txt
+coverage-percent:
+	@echo "======================================================"
+	@echo py.test coverage percent
+	@echo "======================================================"
+	py.test --verbose --cov=$(PACKAGE_PREFIX) tests
 
-docs-sphinx: docs-install
-	rm -fR ./docs/sphinx/_build
-	cd docs/sphinx && make html
-	x-www-browser docs/sphinx/_build/html/index.html
-
-docs-doxygen:
-	rm -fR ./docs/doxygen/*
-	sudo doxygen docs/Doxyfile
-	x-www-browser docs/doxygen/html/index.html
+list:
+	@echo "======================================================"
+	@echo Makefile target list
+	@echo "======================================================"
+	cat Makefile | grep "^[a-z]" | awk '{print $$1}' | sed "s/://g" | sort
