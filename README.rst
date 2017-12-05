@@ -14,8 +14,8 @@ Badges
 .. list-table::
     :stub-columns: 1
 
-    * - docs
-      - |license|
+    * - info
+      - |license| |hits| |contributors|
     * - tests
       - |travis| |coveralls|
     * - package
@@ -24,6 +24,14 @@ Badges
 .. |docs| image:: https://readthedocs.org/projects/pytz-convert/badge/?style=flat
     :alt: Documentation Status
     :target: https://readthedocs.org/projects/pytz-convert
+
+.. |hits| image:: http://hits.dwyl.io/TuneLab/pytz-convert.svg
+    :alt: Hit Count
+    :target: http://hits.dwyl.io/TuneLab/pytz-convert
+
+.. |contributors| image:: https://img.shields.io/github/contributors/TuneLab/pytz-convert.svg
+    :alt: Contributors
+    :target: https://github.com/TuneLab/pytz-convert/graphs/contributors
 
 .. |license| image:: https://img.shields.io/badge/License-MIT-yellow.svg
     :alt: License Status
