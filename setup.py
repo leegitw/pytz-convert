@@ -78,6 +78,7 @@ setup(
     keywords=["pytz", "tune", "multiverse"],
     license='MIT License',
     zip_safe=False,
+    include_package_data=True,
     install_requires=REQUIREMENTS,
     packages=PACKAGES,
     package_data={'': ['LICENSE']},
