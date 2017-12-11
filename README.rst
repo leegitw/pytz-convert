@@ -13,7 +13,6 @@ Badges
 
 .. list-table::
     :stub-columns: 1
-
     * - docs
       - |docs| |license|
     * - info
@@ -28,6 +27,14 @@ Badges
 .. |docs| image:: https://readthedocs.org/projects/pytz-convert/badge/?style=flat
     :alt: Documentation Status
     :target: http://pytz-convert.readthedocs.io
+
+.. |hits| image:: http://hits.dwyl.io/TuneLab/pytz-convert.svg
+    :alt: Hit Count
+    :target: http://hits.dwyl.io/TuneLab/pytz-convert
+
+.. |contributors| image:: https://img.shields.io/github/contributors/TuneLab/pytz-convert.svg
+    :alt: Contributors
+    :target: https://github.com/TuneLab/pytz-convert/graphs/contributors
 
 .. |hits| image:: http://hits.dwyl.io/TuneLab/pytz-convert.svg
     :alt: Hit Count
@@ -119,7 +126,7 @@ or
 
 
 Dependencies
-^^^^^^^^^^^^
+------------
 
 - `pytz <https://pypi.python.org/pypi/pytz>`_
 - `python-dateutil <https://pypi.python.org/pypi/python-dateutil>`_
