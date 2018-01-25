@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #  @namespace pytz-convert
 #
-#    Copyright (c) 2017 TUNE, Inc.
+#    Copyright (c) 2018 TUNE, Inc.
 #    All rights reserved.
 #
 
