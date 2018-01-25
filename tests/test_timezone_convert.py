@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#  @copyright 2016 TUNE, Inc. (http://www.tune.com)
+#  @copyright 2018 TUNE, Inc. (http://www.tune.com)
 #  @version   $Date: 2016-07-07 12:45:28 PDT $
 
 import pytz
