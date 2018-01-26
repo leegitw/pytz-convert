@@ -28,37 +28,37 @@ Badges
     :alt: Documentation Status
     :target: http://pytz-convert.readthedocs.io
 
-.. |hits| image:: http://hits.dwyl.io/TuneLab/pytz-convert.svg
+.. |hits| image:: http://hits.dwyl.io/tuneinc/pytz-convert.svg
     :alt: Hit Count
-    :target: http://hits.dwyl.io/TuneLab/pytz-convert
+    :target: http://hits.dwyl.io/tuneinc/pytz-convert
 
-.. |contributors| image:: https://img.shields.io/github/contributors/TuneLab/pytz-convert.svg
+.. |contributors| image:: https://img.shields.io/github/contributors/tuneinc/pytz-convert.svg
     :alt: Contributors
-    :target: https://github.com/TuneLab/pytz-convert/graphs/contributors
+    :target: https://github.com/tuneinc/pytz-convert/graphs/contributors
 
-.. |hits| image:: http://hits.dwyl.io/TuneLab/pytz-convert.svg
+.. |hits| image:: http://hits.dwyl.io/tuneinc/pytz-convert.svg
     :alt: Hit Count
-    :target: http://hits.dwyl.io/TuneLab/pytz-convert
+    :target: http://hits.dwyl.io/tuneinc/pytz-convert
 
-.. |contributors| image:: https://img.shields.io/github/contributors/TuneLab/pytz-convert.svg
+.. |contributors| image:: https://img.shields.io/github/contributors/tuneinc/pytz-convert.svg
     :alt: Contributors
-    :target: https://github.com/TuneLab/pytz-convert/graphs/contributors
+    :target: https://github.com/tuneinc/pytz-convert/graphs/contributors
 
 .. |license| image:: https://img.shields.io/badge/License-MIT-yellow.svg
     :alt: License Status
     :target: https://opensource.org/licenses/MIT
 
-.. |travis| image:: https://travis-ci.org/TuneLab/pytz-convert.svg?branch=master
+.. |travis| image:: https://travis-ci.org/tuneinc/pytz-convert.svg?branch=master
     :alt: Travis-CI Build Status
-    :target: https://travis-ci.org/TuneLab/pytz-convert
+    :target: https://travis-ci.org/tuneinc/pytz-convert
 
-.. |coveralls| image:: https://coveralls.io/repos/TuneLab/pytz-convert/badge.svg?branch=master&service=github
+.. |coveralls| image:: https://coveralls.io/repos/tuneinc/pytz-convert/badge.svg?branch=master&service=github
     :alt: Code Coverage Status
-    :target: https://coveralls.io/r/TuneLab/pytz-convert
+    :target: https://coveralls.io/r/tuneinc/pytz-convert
 
-.. |requires| image:: https://requires.io/github/TuneLab/pytz-convert/requirements.svg?branch=master
+.. |requires| image:: https://requires.io/github/tuneinc/pytz-convert/requirements.svg?branch=master
     :alt: Requirements Status
-    :target: https://requires.io/github/TuneLab/pytz-convert/requirements/?branch=master
+    :target: https://requires.io/github/tuneinc/pytz-convert/requirements/?branch=master
 
 .. |version| image:: https://img.shields.io/pypi/v/pytz-convert.svg?style=flat
     :alt: PyPI Package latest release

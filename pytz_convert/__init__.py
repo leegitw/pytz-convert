@@ -3,11 +3,12 @@
 #  @namespace pytz-convert
 
 __title__ = 'pytz-convert'
-__version__ = '0.2.2'
+__version__ = '0.2.3'
 __version_info__ = tuple(__version__.split('.'))
 
 __author__ = 'jefft@tune.com'
 __license__ = 'MIT License'
+__copyright__ = 'Copyright 2018 TUNE, Inc.'
 
 __python_required_version__ = (3, 0)
 
