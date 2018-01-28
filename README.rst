@@ -13,6 +13,7 @@ Badges
 
 .. list-table::
     :stub-columns: 1
+
     * - docs
       - |docs| |license|
     * - info
@@ -25,48 +26,40 @@ Badges
       - |requires|
 
 .. |docs| image:: https://readthedocs.org/projects/pytz-convert/badge/?style=flat
-    :alt: Documentation Status
     :target: http://pytz-convert.readthedocs.io
+    :alt: Documentation Status
 
 .. |hits| image:: http://hits.dwyl.io/tuneinc/pytz-convert.svg
-    :alt: Hit Count
     :target: http://hits.dwyl.io/tuneinc/pytz-convert
+    :alt: Hit Count
 
 .. |contributors| image:: https://img.shields.io/github/contributors/tuneinc/pytz-convert.svg
-    :alt: Contributors
     :target: https://github.com/tuneinc/pytz-convert/graphs/contributors
-
-.. |hits| image:: http://hits.dwyl.io/tuneinc/pytz-convert.svg
-    :alt: Hit Count
-    :target: http://hits.dwyl.io/tuneinc/pytz-convert
-
-.. |contributors| image:: https://img.shields.io/github/contributors/tuneinc/pytz-convert.svg
     :alt: Contributors
-    :target: https://github.com/tuneinc/pytz-convert/graphs/contributors
 
 .. |license| image:: https://img.shields.io/badge/License-MIT-yellow.svg
     :alt: License Status
     :target: https://opensource.org/licenses/MIT
 
 .. |travis| image:: https://travis-ci.org/tuneinc/pytz-convert.svg?branch=master
-    :alt: Travis-CI Build Status
     :target: https://travis-ci.org/tuneinc/pytz-convert
+    :alt: Travis-CI Build Status
 
 .. |coveralls| image:: https://coveralls.io/repos/tuneinc/pytz-convert/badge.svg?branch=master&service=github
+    :target: https://coveralls.io/r/tuneinc/pytz-convert?branch=master
     :alt: Code Coverage Status
-    :target: https://coveralls.io/r/tuneinc/pytz-convert
 
 .. |requires| image:: https://requires.io/github/tuneinc/pytz-convert/requirements.svg?branch=master
-    :alt: Requirements Status
     :target: https://requires.io/github/tuneinc/pytz-convert/requirements/?branch=master
+    :alt: Requirements Status
 
 .. |version| image:: https://img.shields.io/pypi/v/pytz-convert.svg?style=flat
-    :alt: PyPI Package latest release
     :target: https://pypi.python.org/pypi/pytz-convert
+    :alt: PyPI Package latest release
 
 .. |supported-versions| image:: https://img.shields.io/pypi/pyversions/pytz-convert.svg?style=flat
-    :alt: Supported versions
     :target: https://pypi.python.org/pypi/pytz-convert
+    :alt: Supported versions
 
 .. end-badges
 
