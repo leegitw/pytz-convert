@@ -1,7 +1,7 @@
 #   Makefile
 #
 # license   http://opensource.org/licenses/MIT The MIT License (MIT)
-# copyright Copyright (c) 2017, TUNE Inc. (http://www.tune.com)
+# copyright Copyright (c) 2018, TUNE Inc. (http://www.tune.com)
 #
 
 .PHONY: clean version build dist local-dev yapf pyflakes pylint
@@ -38,6 +38,13 @@ version:
 	@echo version $(PACKAGE)
 	@echo "======================================================"
 	@echo $(REQUESTS_MV_INTGS_PKG) $(VERSION)
+
+requirements:
+	@echo "======================================================"
+	@echo requirements
+	@echo "======================================================"
+	$(PIP3) install --upgrade -r requirements.txt
+	$(PIP3) freeze
 
 # Install Python 3 via Homebrew.
 brew-python:
@@ -133,7 +140,9 @@ local-dev: remove-package
 	@echo "======================================================"
 	$(PIP3) install --upgrade freeze
 	$(PIP3) install --upgrade .
+	@echo "======================================================"
 	$(PIP3) freeze | grep $(PACKAGE)
+	@echo "======================================================"
 
 dist: clean
 	@echo "======================================================"
@@ -141,10 +150,10 @@ dist: clean
 	@echo "======================================================"
 	$(PIP3) install --upgrade -r requirements.txt
 	hub release create -m "$(PACKAGE_PREFIX)-$(VERSION)-$(PACKAGE_SUFFIX)" v$(VERSION)
-	$(PYTHON3) $(SETUP_FILE) bdist_wheel upload
-	$(PYTHON3) $(SETUP_FILE) bdist_egg upload
-	$(PYTHON3) $(SETUP_FILE) sdist --format=gztar upload
+	$(PYTHON3) $(SETUP_FILE) sdist bdist_wheel upload
+	@echo "======================================================"
 	ls -al ./dist/$(PACKAGE_PREFIX_WILDCARD)
+	@echo "======================================================"
 
 tools-requirements: $(TOOLS_REQ_FILE)
 	@echo "======================================================"
@@ -196,9 +205,9 @@ list-package: site-packages
 	@echo "======================================================"
 	ls -al $(PYTHON3_SITE_PACKAGES)/$(PACKAGE_PREFIX)*
 
-run-example: local-dev
+run-examples: local-dev
 	@echo "======================================================"
-	@echo run-example
+	@echo run-examples $(PACKAGE)
 	@echo "======================================================"
 	$(PYTHON3) examples/example_timezone_convert.py
 
