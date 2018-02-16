@@ -75,7 +75,7 @@ setup(
     author='TUNE Inc.',
     author_email='jefft@tune.com',
     url='https://github.com/tuneinc/pycountry-convert',
-    download_url='https://github.com/tuneinc/pytz-convert/archive/v{0}.tar.gz'.format(version),
+    download_url='https://github.com/TuneLab/pytz-convert/archive/v{0}.tar.gz'.format(version),
     keywords="pytz convert tune",
     license='MIT License',
     zip_safe=False,
