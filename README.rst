@@ -29,28 +29,28 @@ Badges
     :target: http://pytz-convert.readthedocs.io
     :alt: Documentation Status
 
-.. |hits| image:: http://hits.dwyl.io/tuneinc/pytz-convert.svg
-    :target: http://hits.dwyl.io/tuneinc/pytz-convert
+.. |hits| image:: http://hits.dwyl.io/TuneLab/pytz-convert.svg
+    :target: http://hits.dwyl.io/TuneLab/pytz-convert
     :alt: Hit Count
 
-.. |contributors| image:: https://img.shields.io/github/contributors/tuneinc/pytz-convert.svg
-    :target: https://github.com/tuneinc/pytz-convert/graphs/contributors
+.. |contributors| image:: https://img.shields.io/github/contributors/TuneLab/pytz-convert.svg
+    :target: https://github.com/TuneLab/pytz-convert/graphs/contributors
     :alt: Contributors
 
 .. |license| image:: https://img.shields.io/badge/License-MIT-yellow.svg
     :alt: License Status
     :target: https://opensource.org/licenses/MIT
 
-.. |travis| image:: https://travis-ci.org/tuneinc/pytz-convert.svg?branch=master
-    :target: https://travis-ci.org/tuneinc/pytz-convert
+.. |travis| image:: https://travis-ci.org/TuneLab/pytz-convert.svg?branch=master
+    :target: https://travis-ci.org/TuneLab/pytz-convert
     :alt: Travis-CI Build Status
 
-.. |coveralls| image:: https://coveralls.io/repos/tuneinc/pytz-convert/badge.svg?branch=master&service=github
-    :target: https://coveralls.io/r/tuneinc/pytz-convert?branch=master
+.. |coveralls| image:: https://coveralls.io/repos/TuneLab/pytz-convert/badge.svg?branch=master&service=github
+    :target: https://coveralls.io/r/TuneLab/pytz-convert?branch=master
     :alt: Code Coverage Status
 
-.. |requires| image:: https://requires.io/github/tuneinc/pytz-convert/requirements.svg?branch=master
-    :target: https://requires.io/github/tuneinc/pytz-convert/requirements/?branch=master
+.. |requires| image:: https://requires.io/github/TuneLab/pytz-convert/requirements.svg?branch=master
+    :target: https://requires.io/github/TuneLab/pytz-convert/requirements/?branch=master
     :alt: Requirements Status
 
 .. |version| image:: https://img.shields.io/pypi/v/pytz-convert.svg?style=flat
