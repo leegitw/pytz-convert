@@ -3,6 +3,11 @@
 Release History
 ===============
 
+0.2.8 (2018-02-19)
+------------------
+- Python 2.7 supported
+- Travis CI testing both Python 2.7 and 3.6.
+
 0.2.8 (2018-02-16)
 ------------------
 - migrate to github/TuneLab.
